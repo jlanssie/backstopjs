@@ -1,0 +1,32 @@
+trigger: none
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  workingDir: 'myDir'
+  npm_config_cache: $(Pipeline.Workspace)/$(workingDir)/.npm
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.x'
+      checkLatest: true
+    displayName: 'Install Node.js'
+
+  - script: npm i backstopjs
+    workingDirectory: '$(Build.SourcesDirectory)/$(workingDir)'
+    displayName: 'Install BackstopJS'
+
+  - script: npm run test
+    workingDirectory: '$(Build.SourcesDirectory)/$(workingDir)'
+    displayName: 'Run tests' 
+    continueOnError: true
+  
+  - task: PublishTestResults@2
+    displayName: 'Publish test results' 
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: '**/xunit.xml'
+      failTaskOnFailedTests: true
