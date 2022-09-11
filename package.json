@@ -1,0 +1,14 @@
+{
+  "name": "backstopjs",
+  "version": "1.0.0",
+  "dependencies": {
+    "backstopjs": "^6.1.1"
+  },
+  "scripts": {
+    "init": "backstop init",
+    "test":"backstop test",
+    "approve": "backstop approve"
+  },
+  "private": true,
+  "license": "ISC"
+}

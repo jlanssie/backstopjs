@@ -1,1 +1,8 @@
-# backstopjs
+# BackstopJS
+
+## Installation
+
+````
+npm i
+````
+
