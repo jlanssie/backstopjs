@@ -1,8 +1,3 @@
 # BackstopJS
 
-## Installation
-
-````
-npm i
-````
-
+See https://github.com/garris/BackstopJS
